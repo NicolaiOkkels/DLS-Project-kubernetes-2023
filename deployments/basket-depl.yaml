@@ -15,3 +15,17 @@ spec:
       containers:
         - name: basketservice
           image: erhanbasaran/basketservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basket-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: basketservice
+  ports:
+  - name: basketservice
+    protocol: TCP
+    port: 80
+    targetPort: 80

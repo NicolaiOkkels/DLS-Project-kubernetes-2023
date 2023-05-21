@@ -15,3 +15,17 @@ spec:
       containers:
       - name: productsupdateservice
         image: nho96/productsupdateservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: productsupdateservice
+  ports:
+  - name: productsupdateservice
+    protocol: TCP
+    port: 80
+    targetPort: 80

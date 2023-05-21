@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wineshopfrontendservice
+  template:
+    metadata:
+      labels:
+        app: wineshopfrontendservice
+    spec:
+      containers:
+        - name: wineshopfrontendservice
+          image: maja669e/wineshopfrontendservice
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: wineshopfrontendservice
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80

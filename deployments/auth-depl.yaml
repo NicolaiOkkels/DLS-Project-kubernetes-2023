@@ -6,12 +6,26 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: authservice
+      app: #missing
   template:
     metadata:
       labels:
-        app: authservice
+        app: #missing
     spec:
       containers:
-        - name: authservice
+        - name: #missing
           image: #missing
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: #missing
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80

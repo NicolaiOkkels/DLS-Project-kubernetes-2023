@@ -10,17 +10,19 @@ spec:
     - host: acme.com
       http:
         paths:
-          - path: /api/platforms
+          - path: /api
             pathType: Prefix
             backend:
               service:
-                name: platforms-clusterip-srv
+                name: admin-clusterip-srv
                 port:
                   number: 80
-          - path: /api/c/platforms
+          - path: /api/basket
             pathType: Prefix
             backend:
               service:
-                name: commands-clusterip-srv
+                name: basket-clusterip-srv
                 port:
                   number: 80
+
+          

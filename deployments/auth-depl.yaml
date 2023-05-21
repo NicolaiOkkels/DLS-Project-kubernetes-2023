@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: #missing
+      app: authenticationservice
   template:
     metadata:
       labels:
-        app: #missing
+        app: authenticationservice
     spec:
       containers:
-        - name: #missing
-          image: #missing
+        - name: authenticationservice
+          image: alex8943/authenticationservice
 ---
 apiVersion: v1
 kind: Service
@@ -23,7 +23,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: #missing
+    app: authenticationservice
   ports:
     - name: http
       protocol: TCP

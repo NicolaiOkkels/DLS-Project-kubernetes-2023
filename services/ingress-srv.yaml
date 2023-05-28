@@ -10,6 +10,13 @@ spec:
     - host: wine-webshop.azurewebsites.net
       http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-clusterip-srv
+                port:
+                  number: 80
           - path: /api/admin/?(.*)
             pathType: Prefix
             backend:

@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: acme.com
+    - host: wine-webshop.azurewebsites.net
       http:
         paths:
           - path: /api/admin/?(.*)
@@ -17,6 +17,24 @@ spec:
                 name: admin-clusterip-srv
                 port:
                   number: 80
-
-
-          
+          - path: /api/basket/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: basket-clusterip-srv
+                port:
+                  number: 80
+          - path: /auth/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-clusterip-srv
+                port:
+                  number: 80
+          - path: /graphql
+            pathType: Prefix
+            backend:
+              service:
+                name: products-clusterip-srv
+                port:
+                  number: 80
